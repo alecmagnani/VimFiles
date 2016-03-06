@@ -26,6 +26,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'junegunn/goyo.vim'
 Plugin 'scwood/vim-hybrid'
 Plugin 'zenorocha/dracula-theme',{'rtp': 'vim/'}
+Plugin 'chriskempson/base16-vim'
 
 
 " All of your Plugins must be added before the following line
@@ -52,10 +53,11 @@ set columns=200
 set backspace=2
 set showcmd
 set mouse=a
+set nowrap
 
 syntax on
 color 256-jungle
-color hybrid
+color dracula 
 
 :let mapleader = "\<Space>" 
 :map <Leader>A o <Esc>
@@ -81,3 +83,25 @@ let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+
+"Ensure :q to quit even when Goyo is active
+function! s:goyo_enter()
+	let b:quitting = 0
+	let b:quitting_bang = 0
+	autocmd QuitPre <buffer> let b:quitting = 1
+	cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+endfunction
+
+function! s:goyo_leave()
+	"Quit Vim if this is the only remaining buffer
+	if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+		if b:quitting_bang
+			qa!
+		else
+			qa
+		endif
+	endif
+endfunction
+
+autocmd! User GoyoEnter call <SID>goyo_enter()
+autocmd! User GoyoLeave call <SID>goyo_leave()
