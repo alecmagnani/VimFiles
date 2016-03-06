@@ -57,7 +57,10 @@ set nowrap
 
 syntax on
 color 256-jungle
-color dracula 
+color hybrid 
+hi Normal ctermbg=none
+highlight NonText ctermbg=none
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
 :let mapleader = "\<Space>" 
 :map <Leader>A o <Esc>
