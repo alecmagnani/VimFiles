@@ -27,7 +27,7 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'scwood/vim-hybrid'
 Plugin 'zenorocha/dracula-theme',{'rtp': 'vim/'}
 Plugin 'chriskempson/base16-vim'
-
+Plugin 'michalbachowski/vim-wombat256mod'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -56,11 +56,12 @@ set mouse=a
 set nowrap
 
 syntax on
-color 256-jungle
-color hybrid 
+color wombat256mod 
+"Transparency
 hi Normal ctermbg=none
 highlight NonText ctermbg=none
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+"Line number color 
+highlight LineNr term=bold cterm=NONE ctermfg=Grey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
 :let mapleader = "\<Space>" 
 :map <Leader>A o <Esc>
@@ -68,8 +69,9 @@ highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE gui
 :map <Right> :echo 'Use L'
 :map <Up> :echo 'Use K'
 :map <Down> :echo 'Use J'
-:inoremap <F4> <C-R>=expand("%:t:r")<CR>
-inoremap { {<CR>}<Esc>ko
+
+"Auto expand  {}s in .java files only
+autocmd BufRead,BufNewFile *.java inoremap { {<CR>}<Esc>ko
 
 "CTRLP Settings
 let g:ctrlp_map = '<c-p>'
