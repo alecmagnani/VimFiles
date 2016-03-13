@@ -28,6 +28,8 @@ Plugin 'scwood/vim-hybrid'
 Plugin 'zenorocha/dracula-theme',{'rtp': 'vim/'}
 Plugin 'chriskempson/base16-vim'
 Plugin 'michalbachowski/vim-wombat256mod'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -89,6 +91,10 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
+"Airline Settings
+set laststatus=2
+:let g:airline_theme='bubblegum'
+
 "Ensure :q to quit even when Goyo is active
 function! s:goyo_enter()
 	let b:quitting = 0
@@ -110,3 +116,20 @@ endfunction
 
 autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
+
+
+"Resize the current split to at least (90,25) but no more than (140,60)
+" or 2/3 of the available space otherwise.
+function Splitresize()
+    let hmax = max([winwidth(0), float2nr(&columns*0.66), 90])
+    let vmax = max([winheight(0), float2nr(&lines*0.66), 25])
+    exe "vertical resize" . (min([hmax, 140]))
+    exe "resize" . (min([vmax, 60]))
+endfunction
+
+" Move between splits with Ctrl+h, Ctrl+j, Ctrl+k, Ctrl+l
+" Resize split as you move
+nnoremap <silent><C-J> <C-W><C-J>:call Splitresize()<CR>
+nnoremap <silent><C-K> <C-W><C-K>:call Splitresize()<CR>
+nnoremap <silent><C-L> <C-W><C-L>:call Splitresize()<CR>
+nnoremap <silent><C-H> <C-W><C-H>:call Splitresize()<CR>
