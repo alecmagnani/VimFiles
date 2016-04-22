@@ -1,0 +1,64 @@
+/* Startpage  Css
+   By Dylan Araps */
+html,
+body,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #336699;
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  display: block;
+  font-family: 'System San Francisco Display Regular';
+  left: 50%;
+  position: absolute;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+h1 {
+  color: #7788bb;
+  display: block;
+  margin: 0 auto;
+  text-align: left;
+  width: 400px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #70838c;
+  opacity: .4;
+  width: 400px;
+}
+
+ul {
+  display: block;
+  margin: 0 auto;
+  width: 400px;
+}
+
+li {
+  color: #bbbbcc;
+  display: inline-block;
+  font-size: 1.2em;
+  line-height: 1.5;
+  list-style: none;
+  margin: 5px;
+}
+
+a {
+  color: #f3f4f5;
+  text-decoration: none;
+  transition: .2s;
+}
+
+a:hover {
+  color: #bbbbcc;
+}
