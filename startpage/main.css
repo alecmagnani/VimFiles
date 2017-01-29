@@ -24,7 +24,7 @@ main {
 }
 
 h1 {
-  color: #B2B2B2;
+  color: #D95F69;
   display: block;
   margin: 0 auto;
   text-align: left;
@@ -54,7 +54,7 @@ li {
 }
 
 a {
-  color: #f3f4f5;
+  color: #223445;
   text-decoration: none;
   transition: .2s;
 }
