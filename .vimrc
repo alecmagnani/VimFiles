@@ -32,12 +32,13 @@ Plugin 'michalbachowski/vim-wombat256mod'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'dracula/vim'
+Plugin 'jeetsukumaran/vim-buffergator'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-" filetype plugin on
+"filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -59,14 +60,12 @@ set backspace=2
 set showcmd
 set mouse=a
 set nowrap
+set t_Co=256
 
 "Expermimental Status hiding
 let s:hidden_all = 1
 set noshowmode
 set noruler
-set laststatus=0
-set noshowcmd
-set cmdheight=1
 
 "Silence Vim
 set noerrorbells visualbell t_vb=
@@ -107,8 +106,8 @@ nnoremap <C-H> <C-W><C-H>
 :map <Down> :echo 'Use J'
 
 "Auto expand  {}s in .java files only
-autocmd BufRead,BufNewFile *.java inoremap { {<CR>}<Esc>ko
-autocmd BufRead,BufNewFile *.c inoremap { {<CR>}<Esc>ko
+"autocmd BufRead,BufNewFile *.java inoremap { {<CR>}<Esc>ko
+"autocmd BufRead,BufNewFile *.c inoremap { {<CR>}<Esc>ko
 
 set tabstop=4
 set softtabstop=4
